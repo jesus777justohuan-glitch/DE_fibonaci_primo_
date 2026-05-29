@@ -1,0 +1,340 @@
+/* ─── Variables de Color (Predominio Plomo con Detalles Café) ─── */
+:root {
+    --color-bg: #161719;                 /* Gris plomo oscuro y profundo para el fondo */
+    --color-surface: #1e2023;            /* Plomo medio para elementos secundarios */
+    --color-card: #26292e;               /* Plomo grafito claro para destacar las tarjetas/cajas */
+    --color-border: rgba(255, 255, 255, 0.06); /* Bordes plomo translúcidos muy finos */
+    --color-text-primary: #f4f5f7;       /* Blanco platino limpio de alta legibilidad */
+    --color-text-secondary: #9fa4b0;     /* Gris plomo claro para descripciones y menús */
+    --color-text-tertiary: #656b78;      /* Plomo apagado para menor relevancia */
+    --color-text-info: #cfa782;          /* Café avellana / Bronce suave para los destaques */
+    --color-accent: #cfa782;             /* Color de acento café unificado */
+    --color-background-info: rgba(207, 167, 130, 0.08); /* Fondo translúcido café */
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Estilos Generales ─── */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    margin: 0 auto;
+    overflow-x: hidden;
+    /* Esto es lo que mata la barra de scroll inferior */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+div , nav{
+    
+   
+    max-width: 1000px; /* Ancho máximo enlazado simétricamente con tu footer-content */
+    margin: 0 auto;    /* Centra los bloques en pantallas grandes */
+}
+
+html {
+    overflow-y: scroll;
+}
+
+
+main {
+    flex: 1;
+}
+
+
+/* ─── Menú de Navegación (`.main-header`) ─── */
+
+/* 1. El header ocupa todo el ancho */
+/* ─── Menú de Navegación (`.main-header`) ─── */
+
+/* 1. El header ocupa todo el ancho */
+.main-header {
+    width: 100%;
+    max-width: none;
+    padding: 1.5rem 0;
+    /* Quitamos el borde original para usar el pseudo-elemento */
+    border-bottom: none; 
+    margin: 0;
+    margin-bottom: 1rem;
+    position: relative; /* Necesario para posicionar el borde absoluto */
+}
+
+/* 2. El contenedor interno centra el menú */
+.nav-container nav {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-container ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-container a {
+    text-transform: capitalize;
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.2s ease;
+}
+
+.nav-container a:hover {
+    color: var(--color-text-primary);
+}
+
+/* Enlace activo con el sutil indicador café inferior */
+.nav-container a.active {
+    color: var(--color-text-primary);
+}
+
+.nav-container a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+}
+
+/* --- AQUÍ ESTÁ LA MAGIA: La línea de 1px separada --- */
+.main-header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Cambia este valor para mover la línea: ej. -1px, 5px */
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-border);
+    /* El contenido del menú no se mueve, solo esta línea */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ─── Hero Sección Central (`.hero-section`) ─── */
+.hero-section {
+    padding: 2rem 0 1rem;
+    
+}
+
+
+
+
+.hero-content {
+    max-width: 600px;   /* Control de lectura óptimo para el texto */
+    margin-left: 177px;  /* Empuja el bloque automáticamente por completo hacia la derecha */
+    margin-right: 70px;    /* Se asegura de pegarse al borde derecho */
+    
+    /* Si además quieres que el texto interno se alinee a la derecha: */
+    /* text-align: right; */
+}
+
+
+
+
+
+.fib-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-text-info); /* #cfa782 */
+    background: var(--color-background-info);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(207, 167, 130, 0.15);
+}
+/* Etiqueta de bienvenida en tono café translúcido */
+.welcome-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-text-info); /* #cfa782 */
+    background: var(--color-background-info);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(207, 167, 130, 0.15);
+}
+
+
+
+
+
+
+
+
+.hero-content h1 {
+    font-size: 38px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1.25;
+    margin-bottom: 16px;
+}
+
+.hero-content p {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 2.0; /* Aumentado de 1.8 a 2.0 para más aire vertical */
+    margin-bottom: 2.5rem;
+    text-align: justify; /* Opcional: alinea el texto a ambos lados para llenar mejor el ancho */
+}
+
+/* ─── Contenedor de Botones y Enlaces (`.project-links`) ─── */
+.project-links {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* Estilo Base de Botones */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius-md);
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+}
+
+/* Botón Primario: Resaltado en tono Café cuero elegante */
+.btn-primary {
+    background-color: #8f6f51;
+    color: #ffffff;
+    border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+    background-color: #a48160;
+}
+
+/* Botón Secundario: Integrado en el Plomo de las tarjetas */
+.btn-secondary {
+    background-color: var(--color-card);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-surface);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Ajuste sutil para los iconos SVG dentro de los botones */
+.btn svg {
+    flex-shrink: 0;
+    display: block;
+}
+/* ─── Estilos Responsivos (Celulares y Tablets) ─── */
+@media (max-width: 768px) {
+
+    /* 1. Comportamiento del Hero Content en Inicio COMPLETAMENTE CENTRADO */
+    .hero-section {
+        padding: 2rem 0 1rem !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    .hero-content {
+        max-width: 100% !important;
+        width: 100% !important;
+        /* 🌟 AQUÍ ESTÁ EL TRUCO: Quitamos los márgenes fijos de PC y centramos todo el bloque */
+        margin: 0 auto !important; 
+        text-align: center !important; /* Centra el título h1, el párrafo p y la etiqueta */
+    }
+
+    .hero-content h1 {
+        font-size: 30px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 16px !important;
+    }
+
+    .hero-content p {
+        font-size: 15.5px !important;
+        line-height: 1.8 !important;
+        margin-bottom: 2.5rem !important;
+        text-align: center !important; /* Asegura que el texto largo no se desalinee */
+    }
+
+    /* Botones de acción alineados verticalmente y centrados */
+    .project-links {
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+        align-items: center !important; /* Centra los botones en el eje horizontal */
+    }
+
+    .btn {
+        width: 100% !important;
+        max-width: 320px !important; /* Le da un ancho máximo elegante a los botones para que no sean gigantes */
+        justify-content: center !important; 
+        padding: 14px 20px !important;
+        font-size: 15px !important;
+    }
+
+
+    /* 2. TRUCO DEL FOOTER: Se expande al 100% del ancho del celular */
+    .main-footer {
+        /* Rompe el colchón lateral del body/contenedor en celulares */
+        margin-left: -1.5rem !important;
+        margin-right: -1.5rem !important;
+        
+        /* Reducimos un poco el padding en pantallas chicas para aprovechar espacio */
+        padding: 3rem 1.5rem !important; 
+        
+        /* Asegura que vuelva a calcular anchos correctamente */
+        width: auto !important; 
+        max-width: none !important;
+    }
+
+    /* 3. Ajuste opcional para el contenido interno del footer en celular */
+    .footer-content {
+        grid-template-columns: 1fr !important; /* Una sola columna vertical en celulares */
+        gap: 1.5rem !important;
+        text-align: center !important; /* Centra los textos del footer */
+    }
+
+    .footer-column ul {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 10px !important;
+    }
+}

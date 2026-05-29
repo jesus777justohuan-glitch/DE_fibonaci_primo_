@@ -1,0 +1,553 @@
+/* ─── Variables de Color (Predominio Plomo con Detalles Café) ─── */
+:root {
+    --color-bg: #161719;
+    --color-surface: #1e2023;
+    --color-card: #26292e;
+    --color-border: rgba(255, 255, 255, 0.06);
+    --color-text-primary: #f4f5f7;
+    --color-text-secondary: #9fa4b0;
+    --color-text-tertiary: #656b78;
+    --color-text-info: #cfa782;
+    --color-accent: #cfa782;
+    --color-background-info: rgba(207, 167, 130, 0.08);
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'SF Mono', 'Fira Code', monospace;
+}
+
+/* ─── Estilos Generales ─── */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CONTENEDOR MAESTRO: Centraliza el contenido a 1000px de forma limpia */
+.container-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem; /* El colchón lateral ideal */
+}
+
+/* ─── Menú de Navegación (Header Ocupa 100% para la línea) ─── */
+header {
+    width: 100%;
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.5rem 0;
+}
+
+header nav {
+    display: flex;
+    justify-content: center; /* Centra los botones del menú */
+}
+
+header ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+header a {
+    text-transform: capitalize;
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.2s ease;
+    display: inline-block;
+}
+
+header a:hover, header a.active {
+    color: var(--color-text-primary);
+}
+
+header a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+}
+
+.fib-hero {
+    padding: 3rem 0 1.5rem;
+    display: grid;
+    
+    /* CAMBIO CLAVE: Dividimos el espacio de forma fija (60% izquierda, 40% derecha) */
+    grid-template-columns: 6fr 4fr; 
+    
+    /* Ahora con este gap controlas la distancia exacta entre ambos */
+    gap: 3rem; 
+    
+    align-items: start;
+    width: 100%;
+}
+
+.fib-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-text-info);
+    background: var(--color-background-info);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(207, 167, 130, 0.15);
+}
+
+.fib-hero h1 {
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.fib-hero p {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Imagen con filtro sepia adaptado */
+.imagen {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 24px;
+    filter: sepia(60%) saturate(120%) hue-rotate(340deg); /* Sepia café equilibrado */
+    display: block;
+    margin: 0 auto;
+}
+
+/* ─── Caja de Fórmula ─── */
+.formula-box {
+    background: var(--color-card);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+}
+
+.formula-box .label {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.formula {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--color-text-primary);
+    margin-bottom: 16px;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.chip {
+    font-size: 14px;
+    font-weight: 500;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+}
+
+.chip.active {
+    background: #8f6f51;
+    color: #ffffff;
+    border-color: transparent;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background: var(--color-border);
+    margin: 2.5rem 0;
+}
+
+/* ─── Sliders / Deslizadores ─── */
+.controls-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    background: var(--color-surface);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--color-border);
+}
+
+.controls-row label {
+    font-size: 14px;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+}
+
+.controls-row input[type=range] {
+    flex: 1;
+    min-width: 150px;
+    -webkit-appearance: none;
+    background: #3a3f47;
+    height: 4px;
+    border-radius: 2px;
+    outline: none;
+}
+
+.controls-row input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    cursor: pointer;
+}
+
+.controls-row .val {
+    font-size: 16px;
+    font-weight: 500;
+    min-width: 30px;
+    color: var(--color-text-primary);
+}
+
+/* ─── Rejilla de Tarjetas Estadísticas ─── */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-bottom: 2.5rem;
+    width: 100%;
+}
+
+.stat-card {
+    background: var(--color-card);
+    border-radius: var(--border-radius-md);
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+}
+
+.stat-card .stat-label {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 12px;
+}
+
+.stat-card .stat-val {
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--color-text-primary);
+}
+
+.stat-card .stat-sub {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-top: 6px;
+}
+
+.stat-card.accent .stat-val {
+    color: var(--color-text-info);
+}
+
+/* ─── Tabla y Barras (Solución al llenado de Izquierda a Derecha) ─── */
+.table-wrap {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+th {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+td {
+    padding: 14px 16px;
+    color: var(--color-text-primary);
+    border-bottom: 1px solid var(--color-border);
+}
+
+tr.hl td {
+    background: var(--color-background-info);
+    color: var(--color-text-info);
+}
+
+/* Contenedor de la barra en la celda */
+.bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%; /* Ocupa el espacio asignado por la celda td */
+}
+
+/* Riel base gris */
+.bar-bg {
+    width: 100%;       /* Ocupa todo el espacio interno del componente */
+    max-width: 160px;  /* Controla que no se haga gigantesta */
+    height: 6px;
+    background: #3a3f47;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 0;         /* ELIMINA EL CENTRADO ERRÓNEO: Se alinea a la izquierda de forma nativa */
+}
+
+/* Relleno animado que ahora sí inicia desde la izquierda */
+.bar-fill {
+    height: 100%;
+    background: var(--color-accent);
+    border-radius: 999px;
+    transition: width 0.3s ease;
+    width: 0%;         /* Controlado por JS dinámicamente */
+}
+
+/* ─── Explicaciones Inferiores ─── */
+.insight-box {
+    background: var(--color-card);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.insight-box strong {
+    color: var(--color-text-primary);
+    font-weight: 500;
+}
+
+.problem-section h2 {
+    font-size: 28px; 
+    font-weight: 500; 
+    margin: 8px 0 16px;
+    color: var(--color-text-primary);
+}
+
+
+/* ─── Footer expansible al 100% ─── */
+.main-footer {
+    background-color: #8c6a4d;
+    margin-top: auto;
+    padding: 4rem 2rem;
+    color: #2b1f15;
+    width: 100%;
+}
+/* ─── Estilos de la Nueva Sección de Estrategia ─── */
+.strategy-section {
+    padding: 1.5rem 0;
+    width: 100%;
+}
+
+.strategy-section h2 {
+    font-size: 28px; 
+    font-weight: 500; 
+    margin: 8px 0 24px;
+    color: var(--color-text-primary);
+}
+
+.strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 1.5rem;
+}
+
+.strategy-card {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    padding: 1.5rem;
+    transition: transform 0.2s ease;
+}
+
+.strategy-card:hover {
+    transform: translateY(-2px); /* Un pequeño efecto de flotación suave */
+}
+
+.strategy-icon {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-accent);
+    background: var(--color-background-info);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.strategy-card h3 {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 10px;
+}
+
+.strategy-card p {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+/* ─── Estilos de la Nueva Sección de Estrategia ─── */
+.strategy-section {
+    padding: 1.5rem 0;
+    width: 100%;
+}
+
+.strategy-section h2 {
+    font-size: 28px; 
+    font-weight: 500; 
+    margin: 8px 0 24px;
+    color: var(--color-text-primary);
+}
+
+.strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 1.5rem;
+}
+
+.strategy-card {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    padding: 1.5rem;
+}
+
+.strategy-icon {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-accent);
+    background: var(--color-background-info);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.strategy-card h3 {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 10px;
+}
+
+.strategy-card p {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.strategy-card button:hover {
+    opacity: 0.85;
+}
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.footer-column h4 {
+    color: #1a140f;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.footer-column a {
+    color: #3d2d20;
+    font-size: 13px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    padding-top: 1rem;
+    color: #3d2d20;
+}
+
+/* ─── Estilos Responsivos (Celulares y Tablets) ─── */
+@media (max-width: 768px) {
+    /* 1. Comportamiento del Hero Grid */
+    .fib-hero {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .imagen {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* 2. TRUCO DEL FOOTER: Se expande al 100% del ancho del celular */
+    .main-footer {
+        /* Rompe el colchón lateral del body/contenedor en celulares */
+        margin-left: -2rem !important;
+        margin-right: -2rem !important;
+        
+        /* Reducimos un poco el padding en pantallas chicas para aprovechar espacio */
+        padding: 3rem 1.5rem; 
+        
+        /* Asegura que vuelva a calcular anchos correctamente */
+        width: auto; 
+    }
+
+    /* 3. Ajuste opcional para el contenido interno del footer en celular */
+    .footer-content {
+        grid-template-columns: 1fr; /* Una sola columna vertical en celulares */
+        gap: 1.5rem;
+        text-align: center; /* Centra los textos del footer para que se vea más ordenado en celular */
+    }
+}

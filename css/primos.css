@@ -1,0 +1,539 @@
+/* ─── Variables de Color (Predominio Plomo con Detalles Café) ─── */
+:root {
+    --color-bg: #161719;
+    --color-surface: #1e2023;
+    --color-card: #26292e;
+    --color-border: rgba(255, 255, 255, 0.06);
+    --color-text-primary: #f4f5f7;
+    --color-text-secondary: #9fa4b0;
+    --color-text-tertiary: #656b78;
+    --color-text-info: #cfa782;
+    --color-accent: #cfa782;
+    --color-background-info: rgba(207, 167, 130, 0.08);
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'SF Mono', 'Fira Code', monospace;
+}
+
+/* ─── Estilos Generales y Reseteo ─── */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* Evita scrolls horizontales raros */
+}
+/* 🌟 SOLUCIÓN: Esto hace que tu sección de conclusión se centre igual que Fibonacci en PC */
+.problem-section {
+    width: 100%;
+    max-width: 1000px; /* Misma simetría horizontal global */
+    margin: 0 auto;    /* Obliga a la sección a quedarse en el centro de la pantalla */
+    padding: 0 2rem;   /* Evita que se pegue al borde izquierdo */
+    box-sizing: border-box;
+}
+
+/* CONTENEDOR MAESTRO: Alinea y centra a 1000px de forma idéntica en ambos archivos */
+.container-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem; /* Este colchón da el margen que le falta a primos */
+    flex: 1; /* Empuja el footer hacia abajo si hay poco contenido */
+}
+
+/* Remueve los límites restrictivos globales que tenías antes en etiquetas sueltas */
+header, main, section {
+    width: 100%;
+}
+
+/* El header ocupa el 100% para que su línea divisoria cruce de lado a lado */
+header {
+    width: 100%;
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.5rem 0;
+    margin-bottom: 1rem;
+}
+
+header nav {
+    display: flex;
+    justify-content: center;
+}
+html {
+    overflow-y: scroll;
+}
+
+main {
+    flex: 1;
+}
+
+/* 1. El header ocupa todo el ancho para la línea de 1px */
+header {
+    width: 100%;
+    max-width: none;
+    padding: 1.5rem 0; /* CAMBIO: De 1.36rem a 1.5rem para igualar a Index/Fibonacci */
+    border-bottom: 1px solid var(--color-border);
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+/* 2. El nav centra el contenido */
+header nav {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Asegura alineación vertical perfecta */
+}
+
+/* El resto de estilos se mantienen igual */
+header ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header a {
+    text-transform: capitalize;
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.2s ease;
+    display: inline-block;
+}
+
+header a:hover {
+    color: var(--color-text-primary);
+}
+
+header a.active {
+    color: var(--color-text-primary);
+}
+
+header a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+}
+
+
+
+
+
+
+
+/* ─── Hero Sección Superior ─── */
+.fib-hero {
+    padding: 2rem 0 1rem;
+}
+
+
+
+
+.fib-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-text-info); /* #cfa782 */
+    background: var(--color-background-info);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(207, 167, 130, 0.15);
+}
+
+.fib-hero h1 {
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.fib-hero p {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+/* ─── Caja del Formulario Avanzado ─── */
+.formula-box {
+    background: var(--color-card);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+}
+
+.formula-box .label {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.formula {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--color-text-primary);
+    margin-bottom: 12px;
+}
+
+/* NUEVO: Contenedor para múltiples campos */
+.crypto-inputs-vertical {
+    display: flex;
+    flex-direction: column;
+    max-width: 550px;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-field label {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.input-field input[type="text"] {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    padding: 12px 16px;
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-field input[type="text"]:focus {
+    border-color: var(--color-accent);
+}
+
+.crypto-input-group {
+    display: flex;
+    gap: 12px;
+}
+
+.crypto-input-group input {
+    flex: 1;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    padding: 12px 16px;
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.crypto-input-group input:focus {
+    border-color: var(--color-accent);
+}
+
+/* Bloque del resultado cifrado */
+.crypto-result {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius-md);
+    padding: 16px;
+    border: 1px solid var(--color-border);
+    font-size: 14px;
+}
+
+/* NUEVO: Terminal que muestra el flujo binario en fuente monoespaciada */
+.binary-stream {
+    background: #1a1b1d;
+    color: var(--color-text-info);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(207, 167, 130, 0.2);
+    word-break: break-all;
+    line-height: 1.5;
+    margin-top: 6px;
+}
+
+/* Botones */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0 20px;
+    border-radius: var(--border-radius-md);
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    border: none;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background-color: #8f6f51;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #a48160;
+}
+
+.divider {
+  width: 100%;
+  max-width: 1000px;
+  height: 1px;
+  background: var(--color-border);
+  margin: 2.5rem auto; /* Cambia esto para centrarlo */
+}
+
+
+
+/* ─── Rejilla de Tarjetas Estadísticas ─── */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 2.5rem;
+}
+
+
+
+
+
+
+
+.stat-card {
+    background: var(--color-card);
+    border-radius: var(--border-radius-md);
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+}
+
+.stat-card .stat-label {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 12px;
+}
+
+.stat-card .stat-val {
+    font-size: 24px;
+    ----------------- font-weight: 400;
+    color: var(--color-text-primary);
+}
+
+.stat-card .stat-sub {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+.stat-card.accent .stat-val {
+    color: var(--color-text-info);
+}
+
+
+
+
+
+
+
+/* Caja de nota interna con fondo sutil */
+.note-internal {
+    background: var(--color-surface);
+    border-left: 3px solid var(--color-accent);
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+
+
+
+
+.insight-box strong {
+    color: var(--color-text-primary);
+    font-weight: 00;
+}
+
+
+
+
+
+
+
+/* 3. Asegurar que las imágenes o elementos grandes no rompan el layout */
+img,
+video,
+.binary-stream {
+    max-width: 100%;
+}
+
+
+
+
+
+
+
+/* 2. Este es el truco para que el footer se "salga" del cuerpo y ocupe todo el ancho */
+/* El footer se vuelve "infinito" con márgenes negativos */
+.main-footer {
+    background-color: #8c6a4d;
+
+    /* Esta es la clave: se sale del contenedor padre */
+    margin-top: auto;
+    margin-left: -2rem;
+    /* El valor negativo de tu padding de body */
+    margin-right: -2rem;
+
+    padding: 4rem 2rem;
+    color: #2b1f15;
+    box-sizing: border-box;
+}
+
+
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.footer-column h4 {
+    color: #1a140f;
+    /* Título casi negro para máxima jerarquía */
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.footer-column a {
+    color: #3d2d20;
+    /* Color de enlace oscuro y legible */
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    /* Borde un poco más marcado */
+    padding-top: 1rem;
+    color: #3d2d20;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ─── Estilos Responsivos Mejorados (Celulares y Tablets) ─── */
+@media (max-width: 768px) {
+    
+    /* 1. Estructura General y Contenedor */
+    .container-wrapper {
+        padding: 0 1.5rem; /* Ajuste sutil del colchón lateral para pantallas pequeñas */
+    }
+
+    /* 2. Comportamiento del Hero Grid (Texto e Imagen alineados en una sola columna) */
+    .fib-hero {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        padding: 2rem 0 1rem;
+    }
+    
+    .imagen {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    /* 3. Adaptación del Formulario y Campos Criptográficos */
+    .crypto-inputs-vertical {
+        max-width: 100%; /* Permite que el formulario use todo el ancho disponible */
+    }
+
+    .crypto-input-group {
+        flex-direction: column; /* Apila el input y el botón verticalmente en celulares */
+        gap: 10px;
+    }
+
+    .crypto-input-group .btn {
+        width: 100%; /* El botón toma todo el ancho para facilitar el toque táctil */
+        padding: 12px 0;
+    }
+
+    /* 4. Rejillas de Tarjetas (Estadísticas y Estrategias) */
+    .stats-grid,
+    .strategy-grid {
+        grid-template-columns: 1fr !important; /* Fuerza una sola columna vertical */
+        gap: 12px !important;
+        margin-bottom: 1.5rem;
+    }
+
+    /* 5. TRUCO DEL FOOTER: Expansión absoluta al 100% de la pantalla */
+    .main-footer {
+        /* Rompe con precisión el colchón lateral del contenedor padre */
+        margin-left: -2rem !important;
+        margin-right: -2rem !important;
+        
+        /* Ajuste de relleno interno balanceado para móviles */
+        padding: 3rem 1.5rem !important; 
+        
+        /* Clave: Anula anchos fijos y previene el desborde horizontal (scroll lateral) */
+        width: auto !important; 
+        max-width: none !important;
+    }
+
+    /* 6. Contenido Interno del Footer Centrado y Verticalizado */
+    .footer-content {
+        grid-template-columns: 1fr !important; 
+        gap: 1.5rem !important;
+        text-align: center; 
+    }
+
+    /* Elimina viñetas o márgenes residuales en los menús del footer */
+    .footer-column ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 10px;
+    }
+}

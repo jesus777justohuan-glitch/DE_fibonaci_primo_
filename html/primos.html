@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Números Primos - Desafío Web</title>
+  <link rel="stylesheet" href="../css/primos.css">
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../html/fibonacci_ahorro_progresivo.html">Fibonacci</a></li>
+        <li><a href="../html/primos.html" class="active" >Primos</a></li>
+      </ul>
+    </nav>
+  </header>
+<div class="container-wrapper">
+  <main class="fib-hero">
+    <div >
+      <span class="fib-tag">PROBLEMA APLICADO</span>
+      <h1>¿Qué son los Números Primos?</h1>
+      <p>
+        Un número primo es un entero mayor que 1 que tiene únicamente **dos divisores positivos distintos**: él mismo y
+        el 1. Son los bloques de construcción numéricos de las matemáticas; cualquier otro número entero puede
+        descomponerse como un producto único de factores primos.
+      </p>
+      <p style="margin-top: 12px;">
+        Si un número tiene más de dos divisores (es decir, se puede dividir de forma exacta por otros números
+        intermedios), se le conoce como un <strong>número compuesto</strong>.
+      </p>
+    </div>
+  </main>
+
+  <div class="divider"></div>
+
+  <section class="problem-section">
+    <span class="fib-tag">PROBLEMA APLICADO</span>
+    <h2 style="font-size: 28px; font-weight: 500; margin: 8px 0 16px;">Criptografía y Seguridad de Datos</h2>
+    <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 24px;">
+      Imaginen que necesitan enviar una contraseña o un token de seguridad cifrado a través de internet de forma que
+      ningún atacante pueda interceptarlo ni descifrarlo en el camino. Este es el problema fundamental de la seguridad
+      digital moderna.
+    </p>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">1. Generación de Claves</div>
+        <div class="stat-val" style="font-size: 22px; color: var(--color-text-info);">P × Q = N</div>
+        <div class="stat-sub">Se eligen dos números primos extremadamente grandes y se multiplican.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">2. El Cierre (Clave Pública)</div>
+        <div class="stat-val" style="font-size: 22px; color: var(--color-text-info);">N es Público</div>
+        <div class="stat-sub">El resultado de la multiplicación se usa abiertamente para encriptar los datos.</div>
+      </div>
+      <div class="stat-card accent">
+        <div class="stat-label">3. La Trampa Numérica</div>
+        <div class="stat-val" style="font-size: 22px;">Factorización</div>
+        <div class="stat-sub">Para romper el código, una computadora externa tendría que adivinar qué primos originaron
+          a N.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="interactive-section" style="margin-bottom: 2.5rem;">
+    <div class="formula-box">
+      <div class="label">Módulo de Cifrado Asimétrico</div>
+      <div class="formula">Cifrador de Contraseñas a Binario (Máx. 5 caracteres)</div>
+      <p style="font-size: 14px; color: var(--color-text-secondary); margin-bottom: 16px;">
+        Ingresa una contraseña corta y una llave numérica. El sistema validará si la llave es un primo seguro y te
+        mostrará el rastro de la conversión bit por bit de manera centrada y ordenada.
+      </p>
+
+      <form id="formCifradoPrimos" onsubmit="return false;">
+        <div class="crypto-inputs-vertical">
+          <div class="input-field">
+            <label for="passInput">Contraseña a proteger (Hasta 5 letras):</label>
+            <input type="text" id="passInput" placeholder="Ej: hola" maxlength="5">
+          </div>
+          <div class="input-field" style="margin-top: 12px;">
+            <label for="tokenInput">Llave de Cifrado (Número Primo):</label>
+            <div class="crypto-input-group">
+              <input type="number" id="tokenInput" placeholder="Ej: 7" min="1">
+              <button id="btnVerificar" class="btn btn-primary">Cifrar Datos</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+
+      <div id="resultadoCrypto" class="crypto-result" style="display: none; margin-top: 20px;">
+        <p id="resultadoTexto" style="margin-bottom: 16px; font-size: 15px;"></p>
+
+        <div id="desgloseAlgoritmo" style="margin-bottom: 20px; display: none;">
+          <label class="label" style="font-size: 11px; color: var(--color-text-info);">Rastro del Procesamiento
+            Interno:</label>
+          <div id="tablaDesglose"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 8px;">
+          </div>
+        </div>
+
+        <div id="bloqueBinario" style="display: none;">
+          <label class="label" style="font-size: 11px; color: var(--color-text-info);">Flujo Binario Final en la
+            Red:</label>
+          <div class="binary-stream" id="binaryOutput"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <div class="divider"></div>
+
+
+  <section class="inght-box-clean">
+    <span class="fib-tag">ACLARACION DEL MODULO </span>
+
+    <div style="margin-bottom: 24px; bordettom: 1px solid var(--color-border); padding-bottom: 20px;">
+
+      <h2 style="font-size: 28px; font-weight: 500; margin: 8px 0 16px;">¿Por qué este simulador solo utiliza un número
+        primo y no dos?</h2>
+      <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 24px;">
+        Aunque la criptografía real (como RSA) requiere la interacción de <strong>dos números primos distintos</strong>
+        para generar una clave segura, este simulador simplifica el proceso a un único factor por motivos didácticos.
+        Esto
+        nos permite mostrar el rastro lógico bit a bit en tiempo real, facilitando la comprensión del mecanismo de
+        enmascaramiento sin saturar la interfaz con cálculos complejos.
+      </p>
+      <div class="note-internal">
+        <strong style="color: var(--color-text-primary); font-size: 14px; color: var(--color-accent);">Nota del
+          Módulo:</strong>
+        <p style="color: var(--color-text-secondary);">Este ejercicio es puramente conceptual. En infraestructuras de
+          seguridad real, se emplean números primos de más de 300 dígitos para crear un escudo impenetrable ante
+          cualquier
+          intento de fuerza bruta.</p>
+      </div>
+       
+    </div>
+     <div class="divider"></div>
+    </div>
+  </section>
+ 
+
+
+  <section class="problem-section">
+    <span class="fib-tag">CONCLUSIÓN: DESAFIO PRIMOS</span>
+    <h2 style="font-size: 28px; font-weight: 500; margin: 8px 0 16px;">Los Guardianes de la Web</h2>
+    <p style="color: var(--color-text-secondary);">
+      La seguridad digital descansa sobre la <strong>asimetría matemática</strong>: realizar la multiplicación de
+      números primos es instantáneo, pero el proceso inverso (factorización) es una tarea casi imposible para la
+      tecnología actual. Los números primos son, en esencia, los pilares invisibles que protegen la integridad de toda
+      nuestra información en la red.
+    </p>
+
+  </section><br><br><br><br><br>
+
+
+</div><script src="../javascrip/primo.js"></script>
+
+
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-column">
+            <h4>Simulador Web</h4>
+            <p style="font-size: 14px; line-height: 1.5;">Un espacio dedicado a la comprensión de algoritmos matemáticos y su impacto en la seguridad digital moderna.</p>
+        </div>
+
+        <div class="footer-column">
+            <h4>Navegación</h4>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../html/fibonacci_ahorro_progresivo.html">Reto Fibonacci</a></li>
+                <li><a href="../html/primos.html">Números Primos</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>Contacto</h4>
+            <p style="font-size: 14px; margin-bottom: 8px;">¿Dudas sobre algoritmos?</p>
+            <a href="mailto:contacto@simulador.com" style="font-weight: 600;">contacto@simulador.com</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Simulador de Algoritmos. Desarrollado con lógica y precisión.</p>
+    </div>
+</footer>
+
+
+
+
+
+
+</body>
+
+</html>

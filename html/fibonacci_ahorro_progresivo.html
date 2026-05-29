@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reto Fibonacci - Ahorro Progresivo</title>
+  <link rel="stylesheet" href="../css/fibonacci.css">
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../html/fibonacci_ahorro_progresivo.html" class="active">Fibonacci</a></li>
+        <li><a href="../html/primos.html">Primos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container-wrapper">
+    
+    <div class="fib-hero">
+      <div>
+        <span class="fib-tag">SERIE DE FIBONACCI</span>
+        <h1>La Serie Fibonacci</h1>
+        <p>
+          Descubierta en el siglo XIII por el matemático italiano Leonardo de Pisa, esta célebre secuencia numérica
+          comienza con 0 y 1, y construye cada nuevo término sumando los dos anteriores:
+          <code style="font-family: var(--font-mono); color: var(--color-accent); background: rgba(207, 167, 130, 0.1); padding: 2px 6px; border-radius: 4px;">0, 1, 1, 2, 3, 5, 8, 13, 21...</code>
+        </p>
+        <p>
+          Lo fascinante de esta serie es que no es una simple invención humana; es el código secreto de la naturaleza.
+          Regula la disposición de los pétalos en las flores, las espirales de las piñas de pino, las conchas de los moluscos
+          e incluso las proporciones de las galaxias a través de la llamada "Proporción Áurea".
+        </p>
+        <p>
+          En el ámbito financiero, aplicar esta progresión a un plan de ahorro progresivo rompe con la monotonía de las
+          cuotas fijas. Te permite arrancar con un esfuerzo mínimo y casi imperceptible, escalando de forma exponencial pero orgánica a
+          medida que avanza el tiempo.
+        </p>
+      </div>
+      <div>
+        <br><br><br>
+        <img src="../img/fibonacci-spiral-amp-golden-ratio-vector-21098716.avif" alt="Espiral de Fibonacci" class="imagen">
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="fib-hero" >
+      <div>
+        <span class="fib-tag">CALCULADORA DE AHORRO</span>
+        <h1>Ahorro progresivo<br>con Fibonacci</h1>
+        <p>Cada término es la suma de los dos anteriores. Una secuencia que la naturaleza usa y que puede transformar tu forma de ahorrar.</p>
+      </div>
+      <div class="formula-box">
+        <div class="label">Fórmula general</div>
+        <div class="formula">F(n) = F(n-1) + F(n-2)</div>
+        <div class="label" style="margin-top:10px;">Primeros términos</div>
+        <div class="chips" id="chips"></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <form id="formControlesFibonacci" onsubmit="return false;">
+      <div class="controls-row">
+        <label for="dias">Días del mes</label>
+        <input type="range" id="dias" min="1" max="31" value="5" step="1" oninput="recalcular()">
+        <span class="val" id="dias-val">5</span>
+        
+        <label for="monto" style="margin-left:12px;">Monto Inicial (Bs.)</label>
+        <input type="range" id="monto" min="1" max="50" value="20" step="1" oninput="recalcular()">
+        <span class="val" id="monto-val">20</span>
+      </div>
+    </form>
+
+    <div class="stats-grid" id="stats"></div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:60px">Día</th>
+            <th style="width:140px">Fórmula</th>
+            <th>Ahorro del día</th>
+            <th>Progreso</th>
+            <th>Acumulado</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="insight-box" id="insight"></div>
+    <div class="divider"></div>
+    <section class="strategy-section">
+      <span class="fib-tag">SOLUCIÓN PRÁCTICA</span>
+      <h2>¿Cómo aplicar Fibonacci sin morir en el intento?</h2>
+      
+      <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 24px;">
+        Como vimos que la curva exponencial se vuelve inalcanzable, la matemática nos da una alternativa inteligente: **el método de reinicio o pivote**. No necesitas seguir la secuencia hasta el infinito; puedes usar su impulso inicial a tu favor mediante ciclos controlados.
+      </p>
+
+      <div class="strategy-grid">
+        <div class="strategy-card">
+          <div class="strategy-icon">01</div>
+          <h3>Ciclos de 7 o 14 Días</h3>
+          <p>Reinicia la secuencia cada dos semanas. Así aprovechas la facilidad de los primeros números bajos repetidamente sin llegar a los días críticos impagables.</p>
+        </div>
+
+        <div class="strategy-card">
+          <div class="strategy-icon">02</div>
+          <h3>Topes Máximos</h3>
+          <p>Pon un límite (por ejemplo, máximo 80 Bs. por día). Cuando la serie toque ese número, congela la cuota fija durante el resto del mes.</p>
+        </div>
+
+        <div class="strategy-card">
+          <div class="strategy-icon">03</div>
+          <h3>Fibonacci Invertido</h3>
+          <p>Empieza el mes con el número más alto cuando tu bolsillo está lleno tras recibir el sueldo, y ve disminuyendo el monto a medida que se acaba el mes.</p>
+        </div>
+      </div>
+    </section>
+    
+    
+    <div class="divider"></div>
+    <section class="strategy-section" style="margin-top: -1.5rem;">
+      <span class="fib-tag">SIMULADOR DE BOLSILLO</span>
+      <h2>¿Cuántos días resiste tu economía?</h2>
+      
+      <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 24px;">
+        Como vimos que la curva exponencial se vuelve inalcanzable, calcula aquí en qué día la secuencia de Fibonacci superaría tu capacidad de ahorro diario.
+      </p>
+
+      <div class="strategy-card" style="margin-bottom: 2rem;">
+        <h3 style="margin-bottom: 15px;">Prueba tu Presupuesto</h3>
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;">
+          <label style="font-size: 14px; color: var(--color-text-primary);">¿Cuánto es lo máximo que podrías ahorrar en UN SOLO día?</label>
+          <input type="number" id="max-diario-input" value="100" min="10" style="background: var(--color-surface); border: 1px solid var(--color-border); color: #fff; padding: 8px 12px; border-radius: 6px; width: 100px; outline: none; font-family: var(--font-sans);">
+          <span style="color: var(--color-text-secondary); font-size: 14px;">Bs.</span>
+          <button onclick="calcularViabilidad()" style="background: var(--color-accent); color: #161719; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 500; cursor: pointer; font-family: var(--font-sans); transition: opacity 0.2s;">Analizar</button>
+        </div>
+        <div id="resultado-viabilidad" style="padding: 12px; background: var(--color-surface); border-left: 4px solid var(--color-accent); border-radius: 4px; font-size: 14px; color: var(--color-text-secondary);">
+          Introduce un monto para ver en qué día la regla de Fibonacci se vuelve insostenible.
+        </div>
+      </div>
+
+      <div class="strategy-grid">
+        <div class="strategy-card">
+          <div class="strategy-icon">01</div>
+          <h3>Ciclos Cortos</h3>
+          <p>Reinicia la secuencia a cero cada 7 o 14 días. Así aprovechas el impulso de las bases bajas repetidamente sin estallar tu presupuesto.</p>
+        </div>
+
+        <div class="strategy-card">
+          <div class="strategy-icon">02</div>
+          <h3>Topes Máximos</h3>
+          <p>Fija un techo (ej. 80 Bs.). Cuando la serie toque ese número, congela la cuota de ahí en adelante en lugar de seguir sumando.</p>
+        </div>
+
+        <div class="strategy-card">
+          <div class="strategy-icon">03</div>
+          <h3>Fibonacci Invertido</h3>
+          <p>Inicia con el monto más alto cuando cobras tu sueldo, y desciende gradualmente a montos pequeños a fin de mes.</p>
+        </div>
+      </div>
+    </section><div class="divider"></div>
+    <section class="problem-section" >
+      <span class="fib-tag">CONCLUSIÓN: DESAFÍO FIBONACCI</span>
+      <h2>¿Vale la pena el ahorro progresivo?</h2>
+      <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 24px;">
+        La secuencia de Fibonacci aplicada al ahorro es una herramienta poderosa para empezar. Si te propones ahorrar 10
+        bolivianos el primer día y sigues la lógica de sumar los dos días anteriores, en solo 5 días habrás acumulado un
+        total de <strong>120 bolivianos</strong>. Es una forma increíble de ver cómo el capital crece rápidamente con disciplina.
+      </p>
+      <p style="color: var(--color-text-secondary); line-height: 1.6;">
+        Sin embargo, hay que ser realistas: a medida que avanzan los días, la cantidad necesaria para cumplir con el
+        siguiente paso de la secuencia crece de forma exponencial, volviéndose <strong>prácticamente insostenible</strong>
+        para cualquier bolsillo en poco tiempo.
+      </p>
+    </section><br><br><br><br><br>
+
+  </div> <script src="../javascrip/fibonacci.js"></script>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h4>Simulador Web</h4>
+        <p style="font-size: 14px; line-height: 1.5;">Un espacio dedicado a la comprensión de algoritmos matemáticos y su impacto en la seguridad digital moderna.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../html/fibonacci_ahorro_progresivo.html">Reto Fibonacci</a></li>
+          <li><a href="../html/primos.html">Números Primos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Contacto</h4>
+        <p style="font-size: 14px; margin-bottom: 8px;">¿Dudas sobre algoritmos?</p>
+        <a href="mailto:contacto@simulador.com" style="font-weight: 600; color: #1a140f;">contacto@simulador.com</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Simulador de Algoritmos. Desarrollado con lógica y precisión.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
